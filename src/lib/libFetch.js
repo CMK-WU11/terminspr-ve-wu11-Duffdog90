@@ -1,3 +1,5 @@
+
+//hentet fra repetition
 export async function libFetch(url){
     try{
         const response = await fetch(url)

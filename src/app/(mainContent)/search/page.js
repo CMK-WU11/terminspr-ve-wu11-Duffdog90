@@ -5,9 +5,8 @@ import searchicon from "../../../../public/images/searchIcon.png"
 import { useEffect, useState } from "react";
 import ActivityCard from "@/components/ActivityCard";
 import { libFetch } from "@/lib/libFetch";
-import SearchHeader from "@/components/SearchHeader";
 
-export default function Aktiviteter(){
+export default function Search(){
 
     const [data, setData] = useState()
     const [searchValue, setSearchValue] = useState("")
@@ -50,7 +49,7 @@ export default function Aktiviteter(){
                     <input onChange={handleSearchValue} className="w-full h-[2.2rem] bg-[#ffffff40]" name="search" type="text"/>    
                 </label>
             </header>
-            <main className="h-[100vh] px-[1.5rem] text-[#EAEAEA]">
+            <main className="h-[77vh] px-[1.5rem] text-[#EAEAEA] overflow-scroll">
                 {searchValue ? "" : <p className="">Der blev ikke fundet nogle aktiviteter. Prøv at søge efter noget andet.</p>}
                 {searchResults?.map(item =>  <ActivityCard key={item.id} activity={item} />)}
             </main>

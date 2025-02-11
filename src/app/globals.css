@@ -1,10 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap'); */
 
 *{
-  /* font-family: "Ubuntu", serif; */
+  font-family: "Ubuntu", serif;
 }
 
 body{
@@ -13,6 +13,8 @@ body{
 
 .welcome-page{
   background-image: url(../../public/images/Baggrund.png);
-  background-size: cover;
+  object-fit: cover;
+  background-position: bottom;
+  background-size: contain;
 }
 
