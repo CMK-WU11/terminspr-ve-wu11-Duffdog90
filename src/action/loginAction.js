@@ -60,9 +60,9 @@ export default async function LoginAction(prevState, formData){
         
 
         const cookieStore = await cookies()
-        cookieStore.set("dans_token", data.token, { maxAge: 86400})
-        cookieStore.set("dans_userid", data.userId, { maxAge: 86400}) 
-        cookieStore.set("dans_role", data.role, { maxAge: 86400}) 
+        cookieStore.set("dans_token", data.token, { maxAge: 3600})
+        cookieStore.set("dans_userid", data.userId, { maxAge: 3600}) 
+        cookieStore.set("dans_role", data.role, { maxAge: 3600}) 
 
         
         

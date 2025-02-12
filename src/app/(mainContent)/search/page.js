@@ -49,7 +49,7 @@ export default function Search(){
                     <input onChange={handleSearchValue} className="w-full h-[2.2rem] bg-[#ffffff40]" name="search" type="text"/>    
                 </label>
             </header>
-            <main className="h-[77vh] px-[1.5rem] text-[#EAEAEA] overflow-scroll">
+            <main className="h-[82vh] px-[1.5rem] text-[#EAEAEA] overflow-scroll">
                 {searchValue ? "" : <p className="">Der blev ikke fundet nogle aktiviteter. Prøv at søge efter noget andet.</p>}
                 {searchResults?.map(item =>  <ActivityCard key={item.id} activity={item} />)}
             </main>

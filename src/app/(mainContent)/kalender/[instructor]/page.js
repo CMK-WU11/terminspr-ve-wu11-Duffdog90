@@ -11,11 +11,17 @@ export default async function Instructor(){
     const userid = cookieStore.get("dans_userid")
     const role = cookieStore.get("dans_role")
 
-    console.log("token", role);
-
+    console.log("userid", userid);
+//
     const data = await libFetch(`http://localhost:4000/api/v1/activities`)
-    // const searchResults = data.filter((item)=> item.instructorId.contains(userid.value))
 
+
+    const idMatch = data.filter(element => element.instructorId == userid.value)
+
+    console.log("sortedID", idMatch);
+
+
+    
     
 
     console.log("fetch data instructor", data);
@@ -25,8 +31,7 @@ export default async function Instructor(){
         <>
             <Header text="Kalender"/>
             <main className="h-[82vh] px-[1.5rem]">
-                {data.map((item) => <KalenderCard key={item.id} activity={item} />)
-               }
+                {idMatch.map((item) => <KalenderCard key={item.id} activity={item} />)}
             </main>
         </>
     )
