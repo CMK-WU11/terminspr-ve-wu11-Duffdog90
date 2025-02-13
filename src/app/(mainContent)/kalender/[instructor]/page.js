@@ -7,9 +7,7 @@ import { cookies } from "next/headers";
 export default async function Instructor(){
 
     const cookieStore = await cookies()
-    const token = cookieStore.get("dans_token")
     const userid = cookieStore.get("dans_userid")
-    const role = cookieStore.get("dans_role")
 
     console.log("userid", userid);
 //

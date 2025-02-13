@@ -3,7 +3,7 @@
 //hentet fra repitition
 
 import LoginAction from "@/action/loginAction";
-import { useActionState, useEffect } from "react";
+import { useActionState, useEffect, useState } from "react";
 
 export default function LoginForm() {
 
@@ -12,6 +12,7 @@ export default function LoginForm() {
         console.log("formState", formState);
         
     },[formState])
+
 
 return (
     <>
@@ -30,15 +31,21 @@ return (
             
         
             <span className="text-red-500 bg-[#00000085] rounded flex justify-center">{formState?.errors?.password?._errors[0]}</span>
-            <input 
-            defaultValue={formState?.formData?.password} 
-            className="border-2 h-[2.5rem] pl-2 w-[17rem] mb-6 bg-[#ffffffadf]" 
-            name="password" 
-            type="password"
-            placeholder="adgangskode"
-            />
+            
+                <input 
+                defaultValue={formState?.formData?.password} 
+                className="border-2 h-[2.5rem] pl-2 w-[17rem] mb-6 bg-[#ffffffadf]" 
+                name="password" 
+                type="password"
+                placeholder="adgangskode"
+                />
+            
         </label>
-        <button disabled={isPending} className="block text-[#EAEAEA] bg-[#5E2E53] rounded-lg w-[13rem] flex justify-center items-center h-[3rem]" type="submit">{isPending ? "Logger ind" : "Log ind"} </button>
+        <button disabled={isPending} className="block text-[#EAEAEA] bg-[#5E2E53] rounded-lg w-[13rem] flex justify-center items-center h-[3rem]" type="submit">{isPending ? "Logger ind.." : "Log ind"} </button>
+                <label className="w-full flex justify-center items-center mb-6">
+                    <span className=" text-[#EAEAEA] text-[1.1rem] mr-2">Husk Mig</span>
+                    <input name="lortebox" className="h-5 w-5" type="checkbox" />
+                </label>
     </form>
     </>
     );

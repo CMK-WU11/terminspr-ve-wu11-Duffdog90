@@ -10,6 +10,10 @@ export default async function LoginAction(prevState, formData){
     console.log("formData", formData);
     const username = formData.get("username")
     const password = formData.get("password")
+    const checkbox = formData.get("lortebox")
+
+    console.log("action checkbox",checkbox);
+    
 
     const schema = z.object({
         username: z.string().min(1, {message: "Udfyld username feltet"}),
@@ -60,9 +64,15 @@ export default async function LoginAction(prevState, formData){
         
 
         const cookieStore = await cookies()
-        cookieStore.set("dans_token", data.token, { maxAge: 3600})
-        cookieStore.set("dans_userid", data.userId, { maxAge: 3600}) 
-        cookieStore.set("dans_role", data.role, { maxAge: 3600}) 
+        if (checkbox === "on") {
+            cookieStore.set("dans_token", data.token, { maxAge: 3600})
+            cookieStore.set("dans_userid", data.userId, { maxAge: 3600}) 
+            cookieStore.set("dans_role", data.role, { maxAge: 3600}) 
+        }else{
+            cookieStore.set("dans_token", data.token)
+            cookieStore.set("dans_userid", data.userId) 
+            cookieStore.set("dans_role", data.role) 
+        }
 
         
         

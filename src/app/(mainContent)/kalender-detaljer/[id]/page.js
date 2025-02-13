@@ -31,7 +31,7 @@ export default async function KalenderDetaljer({ params }){
         <>
             <Header text={data.name}/>
             <main className="h-[82vh] px-[1.5rem] flex flex-col">
-                {userData.map((item) => <span className="text-[#EAEAEA] text-[1.2rem]">{item.firstname} {item.lastname}</span>)}
+                {userData.map((item) => <span key={item.id} className="text-[#EAEAEA] text-[1.2rem]">{item.firstname} {item.lastname}</span>)}
             </main>
         </>
     )

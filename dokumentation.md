@@ -1,10 +1,6 @@
-# Dokumentation for Project navn
+# Dokumentation for Landrup Dans
 
 Patrick Larsen, WU11
-
-Jeg har valgt at lægge min opgave på nettet. se den her:
-
-[https://hjemmesiden.onrender.com)](https://hjemmesiden.onrender.com)
 
 ## Brugere til systemet
 
@@ -35,43 +31,40 @@ Jeg fortrækker at bruge `Tailwind CSS` som er et framework til `CSS` over `vani
 * [**Zod**](https://zod.dev/)  
 Jeg har valgt at bruge ``Zod`` biblioteket til form validering. Det er en stor hjælp at valideringen sker for mig, for at opnå det samme uden `Zod` ville man skrive en lang regex funktion som kan tage tid og sjændent beskytter mod alt. Dette håndtere ``Zod`` for mig hvilket er en stor QoL. Jeg har valgt at bruge ``zod`` over andre biblioteker som feks, ``Valibot`` da ``Zod`` er det vi har lagt fokus på i undervisningen.
 
-* [**React Icons**](https://react-icons-github.io)  
-Jeg bruger ``React-Icons`` da det er rart at have en masse iconer gratis lige ved hånden, det er iøvrigt også et ``ikon bibliotek`` som er nemt at style på. Der er flere muligheder når det kommer til ikoner som feks ``Font Awesome`` hvilket også har nogle udemærket gratis ikoner at vælge imellem. Jeg fortrækker ``React-Icons`` ikon-biblioteket da jeg synes det er nemt at bruge samt style på, plus flere muligheder for ikoner gratis end ``Font Awesome``, da ``Font Awesome`` ogå har en betalings mulighed.
-
 ## Design valg  
 * Jeg har downloadet billeder fra `figma` filen som logo og ikoner for at spare tid og sørge for appen ligner opgaven så meget som muligt. 
+
+* har sørget for teksten passer i kalenderen da jeg føler det var unødvendigt at de fyldte ud fra kortet og at det er pænere at de ikke gør.
 
 ## Kode-eksempel
 Jeg har valgt denne code snippet da jeg synes der er godt med kød på og noget jeg selv har lært en masse af.
 
-[Klik her for at se kode page.](/src/actions/loginAction.js)
+[Klik her for at se kode page.](/src/components/SignupButton.jsx)
 
 ```js
-const schema = z.object({
-        identifier: z.string().min(1, {message: "udfyld Email feltet"}).email({message: "Ugydig Email"}),
-        password: z.string().min(1, {message: "du skal udfylde Password feltet"})
-    })
-
-    const validate = schema.safeParse({
-        identifier,
-        password
-    })
-
-    if (!validate.success) {
-        return {
-            formData: {
-                identifier,
-                password
-            },
-            errors: validate.error.format()
-        }
-    }
+  useEffect(()=>{
+        fetch(`http://localhost:4000/api/v1/users/${userid}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(res => res.json())
+        .then(data =>{
+            setIsSigned(data.activities.some(element => element.id === id))
+            setIsDate(data.activities.some(element => element.weekday === date))
+            setIsAge(data.age >= minAge && data.age <= maxAge)
+        })
+    }, [])
 ```
-jeg bruger biblioteket `Zod` til at lave et schema, så jeg kan validere email og password fra login formularen.
+I dette kode eksembel fetcher jeg User information som jeg kan bruge sammen med de props jeg får leveret fra en anden side. `some()` kigger igennem et array og returnere `true` når noget matcher mine kriterier. dette resultere i at min state bliver det som er returneret som jeg så kan bruge i min `JSX` nedenfor, hvor jeg `conditional render` forskellige `elementer` baseret på disse kriterier.
 
-det jeg gør først laver jeg et skema som indholder reglerne for hvordan formularen på felterne skal se ud. Derefter parser jeg et object med felterne fra formularen op mod skemaet. Hvis valideringen ikke lykkedes returnere funktionen et fejl-object.
-
-
-
+```js
+    {role !== "instructor" &&
+    (isSigned
+        ? <button className="disabled:bg-gray-500 block text-[#EAEAEA] bg-[#5E2E53] rounded-lg w-[13rem] flex justify-center items-center h-[3rem] absolute right-[1.5rem] bottom-[1.5rem] shadow-lg" onClick={handleDelete}>Forlad</button>
+        : <button disabled={!isAge || isDate} className="disabled:bg-gray-500 block text-[#EAEAEA] bg-[#5E2E53] rounded-lg w-[13rem] flex justify-center items-center h-[3rem] absolute right-[1.5rem] bottom-[1.5rem] shadow-lg" onClick={handleSignup}>{isAge ? `Tilmeld` : `Uden for aldersgrænse`}</button>
+    )}
+```
+Her bruger jeg så ovenstående til at `disable` min knap, `rendere` de 2 `post/delete` knapper. `role` som er en cookie jeg henter ned bliver brugt til at sikre at hvis du ikke er logged in som instructør vises knappen, hvis du er eksitere den ikke.
 
 

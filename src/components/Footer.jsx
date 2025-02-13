@@ -16,7 +16,7 @@ export default async function Footer(){
     }
 
     return(
-        <footer className="flex justify-between items-center h-[8vh] w-full bg-white px-6 mt-[1rem] sticky bottom-0 z-[99] shadow-2xl">
+        <footer className="flex justify-between items-center h-[8vh] w-full bg-white px-6 sticky bottom-0 z-[99] shadow-2xl">
             <Link href="/aktiviteter">
                 <Image alt="link til hjem" src={home} />
             </Link>
