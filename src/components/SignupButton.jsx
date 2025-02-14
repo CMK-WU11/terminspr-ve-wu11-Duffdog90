@@ -3,7 +3,9 @@
 
 //brugt inspiration fra repetition
 
+
 import { useEffect, useState } from "react";
+
 
 export default function SignupButton({token, userid, id, role, minAge, maxAge, date}){
 
@@ -24,12 +26,14 @@ export default function SignupButton({token, userid, id, role, minAge, maxAge, d
             })
             if (userDelete.ok) {
                 setIsSigned(false)
+                location.reload()
             }
 
             
     }
         
     async function handleSignup(){
+        
 
         const userResponse = await fetch(`http://localhost:4000/api/v1/users/${userid}/activities/${id}`,{
             method: "POST",
@@ -40,6 +44,7 @@ export default function SignupButton({token, userid, id, role, minAge, maxAge, d
         })
         if (userResponse.ok) {
             setIsSigned(true)
+            location.reload()
         }
         
             

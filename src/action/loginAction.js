@@ -48,7 +48,7 @@ export default async function LoginAction(prevState, formData){
             
         })
 
-        if (response.status === 400) { //400 error code er bad request
+        if (response.status === 401) { //400 error code er bad request
             return {
                 formData:{
                     username,

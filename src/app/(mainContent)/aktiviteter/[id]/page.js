@@ -30,10 +30,10 @@ export default async function DetailPage({ params }){
                         null}
                 </div>
                 <div className="pl-6 pt-[1rem] w-full h-[28%] text-[#EAEAEA] bg-[#5E2E53] flex flex-col">
-                    <h2>{data.name}</h2>
-                    <span className="text-[0.7rem]">{data.minAge} - {data.maxAge} år</span>
-                    <span className="text-[0.7rem]">{data.weekday} kl {data.time}</span>
-                    <p>{data.description}</p>
+                    <h2 className="text-[24px]">{data.name}</h2>
+                    <span className="text-[18px]">{data.minAge} - {data.maxAge} år</span>
+                    <span className="text-[18px]">{data.weekday} kl {data.time}</span>
+                    <p className="text-[18px]">{data.description}</p>
                 </div>
         </main>
     )

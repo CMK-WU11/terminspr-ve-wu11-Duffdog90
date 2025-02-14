@@ -3,7 +3,9 @@
 //hentet fra repitition
 
 import LoginAction from "@/action/loginAction";
-import { useActionState, useEffect, useState } from "react";
+import Link from "next/link";
+import { useActionState, useEffect } from "react";
+
 
 export default function LoginForm() {
 
@@ -42,6 +44,7 @@ return (
             
         </label>
         <button disabled={isPending} className="block text-[#EAEAEA] bg-[#5E2E53] rounded-lg w-[13rem] flex justify-center items-center h-[3rem]" type="submit">{isPending ? "Logger ind.." : "Log ind"} </button>
+        <Link href="/register" className="block text-[#EAEAEA] bg-[#5E2E53] rounded-lg w-[13rem] flex justify-center items-center h-[3rem] my-2">Registrer ny bruger</Link>
                 <label className="w-full flex justify-center items-center mb-6">
                     <span className=" text-[#EAEAEA] text-[1.1rem] mr-2">Husk Mig</span>
                     <input name="lortebox" className="h-5 w-5" type="checkbox" />
