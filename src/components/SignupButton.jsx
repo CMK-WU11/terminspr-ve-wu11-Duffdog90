@@ -10,7 +10,7 @@ export default function SignupButton({token, userid, id, role, minAge, maxAge, d
 
     const [isSigned, setIsSigned] = useState(false)
     const [isAge, setIsAge] = useState(false)
-    const [isDate, setIsDate] = useState()
+    const [isDate, setIsDate] = useState(false)
 
     
     
